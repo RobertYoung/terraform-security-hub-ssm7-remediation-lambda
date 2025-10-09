@@ -53,7 +53,6 @@ jobs:
         with:
           semantic_version: 24.2.0
           extra_plugins: |
-            @semantic-release/git
             @semantic-release/github
             conventional-changelog-conventionalcommits
         env:
