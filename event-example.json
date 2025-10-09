@@ -1,0 +1,94 @@
+{
+  "version": "0",
+  "id": "12345678-1234-1234-1234-123456789012",
+  "detail-type": "Security Hub Findings - Imported",
+  "source": "aws.securityhub",
+  "account": "123456789012",
+  "time": "2025-10-09T11:12:43Z",
+  "region": "eu-west-1",
+  "resources": [
+    "arn:aws:securityhub:eu-west-1::product/aws/securityhub/arn:aws:securityhub:eu-west-1:123456789012:subscription/aws-foundational-security-best-practices/v/1.0.0/SSM.7/finding/12345678-1234-1234-1234-123456789012"
+  ],
+  "detail": {
+    "findings": [
+      {
+        "ProductArn": "arn:aws:securityhub:eu-west-1::product/aws/securityhub",
+        "Types": [
+          "Software and Configuration Checks/Industry and Regulatory Standards/AWS-Foundational-Security-Best-Practices"
+        ],
+        "Description": "This control checks whether the block public sharing setting is enabled for AWS Systems Manager documents. The control fails if the block public sharing setting is disabled for Systems Manager documents.",
+        "Compliance": {
+          "Status": "FAILED",
+          "SecurityControlId": "SSM.7",
+          "AssociatedStandards": [
+            {
+              "StandardsId": "standards/aws-foundational-security-best-practices/v/1.0.0"
+            }
+          ]
+        },
+        "ProductName": "Security Hub",
+        "FirstObservedAt": "2025-10-08T22:30:34.334Z",
+        "CreatedAt": "2025-10-08T22:30:39.187Z",
+        "LastObservedAt": "2025-10-09T11:12:02.577Z",
+        "CompanyName": "AWS",
+        "FindingProviderFields": {
+          "Types": [
+            "Software and Configuration Checks/Industry and Regulatory Standards/AWS-Foundational-Security-Best-Practices"
+          ],
+          "Severity": {
+            "Normalized": 90,
+            "Label": "CRITICAL",
+            "Product": 90,
+            "Original": "CRITICAL"
+          }
+        },
+        "ProductFields": {
+          "StandardsArn": "arn:aws:securityhub:::standards/aws-foundational-security-best-practices/v/1.0.0",
+          "StandardsSubscriptionArn": "arn:aws:securityhub:eu-west-1:123456789012:subscription/aws-foundational-security-best-practices/v/1.0.0",
+          "ControlId": "SSM.7",
+          "RecommendationUrl": "https://docs.aws.amazon.com/console/securityhub/SSM.7/remediation",
+          "RelatedAWSResources:0/name": "securityhub-ssm-automation-block-public-sharing-c6fbb6fe",
+          "RelatedAWSResources:0/type": "AWS::Config::ConfigRule",
+          "StandardsControlArn": "arn:aws:securityhub:eu-west-1:123456789012:control/aws-foundational-security-best-practices/v/1.0.0/SSM.7",
+          "aws/securityhub/ProductName": "Security Hub",
+          "aws/securityhub/CompanyName": "AWS",
+          "Resources:0/Id": "arn:aws:iam::123456789012:root",
+          "aws/securityhub/FindingId": "arn:aws:securityhub:eu-west-1::product/aws/securityhub/arn:aws:securityhub:eu-west-1:123456789012:subscription/aws-foundational-security-best-practices/v/1.0.0/SSM.7/finding/12345678-1234-1234-1234-123456789012",
+          "PreviousComplianceStatus": "FAILED"
+        },
+        "Remediation": {
+          "Recommendation": {
+            "Text": "For information on how to correct this issue, consult the AWS Security Hub controls documentation.",
+            "Url": "https://docs.aws.amazon.com/console/securityhub/SSM.7/remediation"
+          }
+        },
+        "SchemaVersion": "2018-10-08",
+        "GeneratorId": "aws-foundational-security-best-practices/v/1.0.0/SSM.7",
+        "RecordState": "ACTIVE",
+        "Title": "SSM.7 SSM documents should have the block public sharing setting enabled",
+        "Workflow": { "Status": "NEW" },
+        "Severity": {
+          "Normalized": 90,
+          "Label": "CRITICAL",
+          "Product": 90,
+          "Original": "CRITICAL"
+        },
+        "UpdatedAt": "2025-10-09T11:12:09.331Z",
+        "WorkflowState": "NEW",
+        "AwsAccountName": "Example Account",
+        "AwsAccountId": "123456789012",
+        "Region": "eu-west-1",
+        "Id": "arn:aws:securityhub:eu-west-1:123456789012:subscription/aws-foundational-security-best-practices/v/1.0.0/SSM.7/finding/12345678-1234-1234-1234-123456789012",
+        "Resources": [
+          {
+            "Partition": "aws",
+            "Type": "AwsAccount",
+            "Region": "eu-west-1",
+            "Id": "AWS::::Account:123456789012"
+          }
+        ],
+        "ProcessedAt": "2025-10-09T11:12:37.230Z"
+      }
+    ]
+  }
+}
