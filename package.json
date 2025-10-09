@@ -26,7 +26,6 @@
     "eslint": "^9.37.0",
     "jest": "^30.2.0",
     "semantic-release": "^24.2.0",
-    "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^10.3.5",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "ts-jest": "^29.1.1",
