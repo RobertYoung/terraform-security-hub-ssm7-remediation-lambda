@@ -1,8 +1,4 @@
-import {
-  EventBridgeEvent,
-  Context,
-  Handler,
-} from "aws-lambda";
+import { EventBridgeEvent, Context } from "aws-lambda";
 import {
   SSMClient,
   UpdateServiceSettingCommand,
@@ -137,13 +133,11 @@ async function disableSSMPublicSharing(
       `Current SSM public sharing setting in ${region}: ${currentSetting.ServiceSetting?.SettingValue}`
     );
 
-    // If already disabled, no need to update
     if (currentSetting.ServiceSetting?.SettingValue === "Disable") {
       console.log(`SSM public sharing already disabled in ${region}`);
       return;
     }
 
-    // Disable public sharing
     await ssmClient.send(
       new UpdateServiceSettingCommand({
         SettingId: settingId,
@@ -166,13 +160,8 @@ async function disableSSMPublicSharing(
  */
 const handleSecurityHubEvent = async (
   event: SecurityHubEvent,
-  context: Context
+  _: Context
 ): Promise<RemediationResponse> => {
-  console.log("SSM.7 Remediation Lambda triggered");
-  console.log("Event:", JSON.stringify(event, null, 2));
-  console.log("Context:", JSON.stringify(context, null, 2));
-
-  // Initialize response
   const response: RemediationResponse = {
     remediatedFindings: 0,
     details: [],
@@ -180,12 +169,10 @@ const handleSecurityHubEvent = async (
   const errors: string[] = [];
 
   try {
-    // Validate event structure
     if (!event.detail?.findings || !Array.isArray(event.detail.findings)) {
       throw new Error("Invalid event structure - missing findings array");
     }
 
-    // Filter for SSM.7 findings that are non-compliant
     const ssm7Findings = event.detail.findings.filter(
       (finding: SSM7Finding) =>
         finding.Compliance.SecurityControlId === "SSM.7" &&
@@ -227,7 +214,6 @@ const handleSecurityHubEvent = async (
       `Found ${remediationTargets.size} unique account-region combinations to remediate`
     );
 
-    // Process each unique account-region combination
     for (const [key, target] of remediationTargets) {
       const findingDetail: FindingRemediationDetail = {
         findingId: target.findings.map((f) => f.Id).join(", "),
@@ -242,19 +228,16 @@ const handleSecurityHubEvent = async (
           `Processing ${target.findings.length} finding(s) in account ${target.accountId}, region ${target.region}`
         );
 
-        // Assume role in target account
         const ssmClient = await assumeRemediationRole(
           target.accountId,
           target.region
         );
 
-        // Disable SSM public sharing for this region
         await disableSSMPublicSharing(ssmClient, target.region);
 
         findingDetail.status = "success";
         findingDetail.message = `Successfully disabled SSM public sharing in region ${target.region}`;
 
-        // Increment the count of successfully remediated findings
         response.remediatedFindings += 1;
 
         console.log(
@@ -271,12 +254,9 @@ const handleSecurityHubEvent = async (
       response.details.push(findingDetail);
     }
 
-    // Check for errors and throw if all failed or handle partial failures
     if (errors.length > 0 && response.remediatedFindings === 0) {
-      // All remediation attempts failed
       throw new Error(`All remediation attempts failed: ${errors.join("; ")}`);
     } else if (errors.length > 0) {
-      // Some succeeded, some failed - log warnings but continue
       console.warn(`Partial remediation success. Errors: ${errors.join("; ")}`);
     }
 
@@ -286,7 +266,7 @@ const handleSecurityHubEvent = async (
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error occurred";
-    console.error("Lambda execution failed:", error);
+    console.error("Lambda execution failed:", errorMessage);
     throw error;
   }
 

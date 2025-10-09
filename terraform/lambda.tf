@@ -1,4 +1,3 @@
-
 data "archive_file" "ssm7_remediation_lambda_zip" {
   type        = "zip"
   output_path = "${path.module}/ssm7-remediation.zip"

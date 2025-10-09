@@ -1,2 +1,4 @@
 [tools]
+checkov = "3.2"
 node = "22"
+tflint = "0.59"

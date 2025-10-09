@@ -2,7 +2,6 @@ import { handleSecurityHubEvent } from "./index";
 import { EventBridgeEvent, Context } from "aws-lambda";
 import { AssumeRoleCommand } from "@aws-sdk/client-sts";
 import {
-  SSMClient,
   GetServiceSettingCommand,
   UpdateServiceSettingCommand,
 } from "@aws-sdk/client-ssm";
