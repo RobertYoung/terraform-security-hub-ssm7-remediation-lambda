@@ -1,4 +1,4 @@
-# SSM.7 Remediation Lambda
+# Terraform Security Hub SSM.7 Remediation Lambda
 
 This Lambda function automatically remediates AWS Security Hub findings for the SSM.7 control by disabling the SSM public sharing service setting.
 
