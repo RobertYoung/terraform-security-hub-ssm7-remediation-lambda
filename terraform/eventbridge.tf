@@ -10,7 +10,8 @@ resource "aws_cloudwatch_event_rule" "ssm7_security_hub_finding" {
     detail = {
       findings = {
         Compliance = {
-          Status = ["FAILED"]
+          SecurityControlId = ["SSM.7"],
+          Status            = ["FAILED"]
         }
         RecordState   = ["ACTIVE"]
         WorkflowState = ["NEW", "NOTIFIED"]
