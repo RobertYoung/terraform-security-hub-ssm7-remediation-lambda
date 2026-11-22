@@ -14,8 +14,8 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@aws-sdk/client-ssm": "^3.450.0",
-    "@aws-sdk/client-sts": "^3.450.0"
+    "@aws-sdk/client-ssm": "^3.1175.0",
+    "@aws-sdk/client-sts": "^3.1175.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.155",
@@ -25,7 +25,7 @@
     "@typescript-eslint/parser": "^8.46.0",
     "eslint": "^9.37.0",
     "jest": "^30.2.0",
-    "semantic-release": "^24.2.0",
+    "semantic-release": "^25.0.9",
     "@semantic-release/github": "^10.3.5",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "ts-jest": "^29.1.1",
