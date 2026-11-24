@@ -21,11 +21,11 @@ rm -f ../ssm7-remediation.zip
 
 # Install dependencies
 echo "📦 Installing dependencies..."
-npm install
+yarn install --frozen-lockfile
 
 # Build TypeScript
 echo "🔧 Compiling TypeScript..."
-npm run build
+yarn build
 
 # Verify build output
 if [ ! -f "dist/index.js" ]; then
