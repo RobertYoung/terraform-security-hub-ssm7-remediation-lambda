@@ -66,23 +66,23 @@ The Lambda returns a detailed response indicating the success or failure of each
 ### Prerequisites
 
 - Node.js 18.x or later
-- npm or yarn
+- yarn (classic 1.x)
 - TypeScript
 
 ### Setup
 
 ```bash
 # Install dependencies
-npm install
+yarn install --frozen-lockfile
 
 # Build the project
-npm run build
+yarn build
 
 # Run linting
-npm run lint
+yarn lint
 
 # Create deployment package
-npm run package
+yarn package
 ```
 
 ### Local Testing
@@ -167,5 +167,5 @@ When making changes to the Lambda:
 1. Update TypeScript source code in `src/`
 2. Add appropriate unit tests
 3. Update this README if functionality changes
-4. Run `npm run build` and `npm run lint` before deployment
+4. Run `yarn build` and `yarn lint` before deployment
 5. Test with realistic Security Hub events
