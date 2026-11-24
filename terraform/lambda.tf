@@ -22,8 +22,13 @@ resource "aws_lambda_function" "ssm7_remediation" {
     }
   }
 
+  tracing_config {
+    mode = "Active"
+  }
+
   depends_on = [
     aws_iam_role_policy_attachment.ssm7_remediation_lambda_basic,
+    aws_iam_role_policy_attachment.ssm7_remediation_lambda_xray,
     aws_cloudwatch_log_group.ssm7_remediation_lambda_logs
   ]
 
